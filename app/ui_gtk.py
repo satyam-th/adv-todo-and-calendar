@@ -2012,6 +2012,11 @@ def run_gtk_app(config: Optional[AppConfig] = None):
     app = Gtk.Application(application_id="org.antigravity.productivity.dashboard")
 
     def on_activate(app):
+        windows = app.get_windows()
+        if windows:
+            windows[0].present()
+            return
+
         if os.path.exists(STYLE_PATH):
             provider = Gtk.CssProvider()
             provider.load_from_path(STYLE_PATH)

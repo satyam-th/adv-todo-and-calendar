@@ -113,7 +113,6 @@ def main():
     target_scr = config.get("target_screen", 2)
     if not any(m["index"] == target_scr for m in monitors):
         target_scr = len(monitors)
-        config.set("target_screen", target_scr)
 
     geom = config.calculate_window_geometry(target_screen_idx=target_scr)
     print(f"[*] Target Monitor : Screen {target_scr} ({geom.get('screen_name', 'Default')})")
