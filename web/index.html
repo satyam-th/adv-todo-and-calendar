@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apex Dashboard • Dual-Screen Productivity Hub</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+  <div class="dashboard-wrapper">
+
+    <!-- Top Universal Dual-Calendar Header -->
+    <header class="calendar-header glass-card">
+      <div class="calendar-panel ad-panel">
+        <div class="panel-tag">GREGORIAN (AD)</div>
+        <div class="calendar-date" id="ad-date">Loading...</div>
+        <div class="calendar-sub" id="ad-sub">--</div>
+      </div>
+
+      <div class="time-panel">
+        <div class="digital-clock" id="live-clock">--:--:--</div>
+        <div class="live-pulse-dot" title="Live sync active"></div>
+      </div>
+
+      <div class="calendar-panel bs-panel">
+        <div class="panel-tag">BIKRAM SAMBAT (BS)</div>
+        <div class="calendar-date" id="bs-date">Loading...</div>
+        <div class="calendar-sub">
+          <span id="bs-np-date">--</span> • <span id="bs-ritu" class="ritu-tag">--</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Two-Column Main Stage: Full Calendar (Left) + Sidebar (Right) -->
+    <div class="main-split-stage">
+
+      <!-- LEFT COLUMN: Full Monthly Dual Calendar Grid -->
+      <section class="calendar-stage-pane glass-card">
+        <!-- Calendar Nav Toolbar -->
+        <div class="cal-toolbar">
+          <div class="cal-nav-group">
+            <button class="cal-btn" id="btn-prev-month">◀ Prev</button>
+            <button class="cal-btn" id="btn-today-month">Today</button>
+            <button class="cal-btn" id="btn-next-month">Next ▶</button>
+          </div>
+
+          <div class="cal-title-group">
+            <h2 id="cal-month-heading">Bhadra 2083 BS</h2>
+            <span class="cal-span-sub" id="cal-span-sub">Aug 2026 - Sep 2026 AD</span>
+          </div>
+
+          <div class="cal-toggle-group">
+            <button class="cal-toggle-btn active" id="btn-toggle-bs">Nepali (BS)</button>
+            <button class="cal-toggle-btn" id="btn-toggle-ad">English (AD)</button>
+          </div>
+        </div>
+
+        <!-- 7-Day Weekday Headers (Sunday to Saturday) -->
+        <div class="weekday-grid-header" id="weekday-grid-header">
+          <div>Sun (आइत)</div>
+          <div>Mon (सोम)</div>
+          <div>Tue (मङ्गल)</div>
+          <div>Wed (बुध)</div>
+          <div>Thu (बिहि)</div>
+          <div>Fri (शुक्र)</div>
+          <div class="sat-header">Sat (शनि)</div>
+        </div>
+
+        <!-- Monthly 42-Cell Grid -->
+        <div class="month-days-grid" id="month-days-grid">
+          <!-- Populated by app.js -->
+        </div>
+      </section>
+
+      <!-- RIGHT COLUMN: Task & Deadline Sidebar -->
+      <aside class="sidebar-stage-pane glass-card">
+        
+        <!-- Navigation & View Filter Bar -->
+        <nav class="filter-bar">
+          <div class="filter-group" id="tasks-filter-group">
+            <button class="filter-tab active" data-filter="all">All <span class="counter-badge" id="count-all">0</span></button>
+            <button class="filter-tab" data-filter="active">Active <span class="counter-badge" id="count-active">0</span></button>
+            <button class="filter-tab tab-critical" data-filter="urgent">Urgent <span class="counter-badge" id="count-urgent">0</span></button>
+            <button class="filter-tab" data-filter="completed">Done <span class="counter-badge" id="count-done">0</span></button>
+            <button class="new-task-trigger-btn" id="btn-open-task-modal">+ New Task</button>
+          </div>
+          <div class="view-toggle-group">
+            <button class="mode-btn active" id="btn-show-today">⭐ Today <span class="counter-badge" id="count-today">0</span></button>
+            <button class="mode-btn" id="btn-show-tasks">Tasks</button>
+            <button class="mode-btn" id="btn-show-routines">Routines <span class="counter-badge" id="count-routines">0</span></button>
+            <button class="mode-btn" id="btn-show-notes">Diary <span class="counter-badge" id="count-notes">0</span></button>
+          </div>
+        </nav>
+
+        <!-- Sidebar Content Stage -->
+        <div class="sidebar-content-area">
+          
+          <!-- Today's Focus View: Remaining Routines & Tasks -->
+          <section id="today-section" class="view-panel active">
+            <div class="today-header-card">
+              <div class="today-title-group">
+                <h3 id="today-title">⭐ Today's Remaining Focus</h3>
+                <span class="sub-label" id="today-subtitle">What is remaining to do today: routines & tasks</span>
+              </div>
+              <div class="today-stats-pills">
+                <span class="today-stat-pill routines-pill" id="today-routines-pill">0 routines left</span>
+                <span class="today-stat-pill tasks-pill" id="today-tasks-pill">0 tasks remaining</span>
+              </div>
+            </div>
+
+            <div class="today-scrollable">
+              <!-- Subsection: Remaining Routines for Today -->
+              <div class="today-subsection">
+                <div class="today-subsection-header">
+                  <div class="today-sub-title">
+                    <span>⏰ Remaining Routines</span>
+                    <span class="counter-badge" id="count-today-routines">0</span>
+                  </div>
+                  <button class="cal-btn-sm" id="btn-goto-routines" title="Go to Routines">Manage ➔</button>
+                </div>
+                <div id="today-routines-container" class="today-items-container">
+                  <!-- Rendered uncompleted routines for today -->
+                </div>
+              </div>
+
+              <!-- Subsection: Remaining Tasks (Today + Rollovers from past) -->
+              <div class="today-subsection">
+                <div class="today-subsection-header">
+                  <div class="today-sub-title">
+                    <span>✓ Remaining Tasks & Rollovers</span>
+                    <span class="counter-badge" id="count-today-tasks">0</span>
+                  </div>
+                  <button class="cal-btn-sm" id="btn-goto-tasks" title="Go to Tasks">Manage ➔</button>
+                </div>
+                <div id="today-tasks-container" class="today-items-container">
+                  <!-- Rendered uncompleted tasks -->
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Tasks View -->
+          <section id="tasks-section" class="view-panel">
+            <!-- Calendar Date Filter Banner -->
+            <div id="task-date-filter-banner" class="date-filter-banner hidden">
+              <div class="banner-left">
+                <span class="banner-icon">📅</span>
+                <span id="task-date-filter-text">Filtered: 2026-09-28</span>
+              </div>
+              <div class="banner-actions">
+                <button class="cal-btn-sm" id="btn-add-task-filtered">+ Add Task</button>
+                <button class="cal-btn-sm btn-clear-filter" id="btn-clear-task-filter">✕ Show All</button>
+              </div>
+            </div>
+
+            <div class="tasks-scrollable" id="tasks-container">
+              <div class="empty-state">
+                <div class="loader-spinner"></div>
+                <p>Loading tasks & countdown timers...</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Daily Routines View -->
+          <section id="routines-section" class="view-panel">
+            <div class="notes-header-row">
+              <div class="notes-title-group">
+                <h3>Daily Routines & Habits</h3>
+                <span class="sub-label" id="routines-sub-summary">Scheduled daily habits with automated alerts</span>
+              </div>
+              <button class="cal-btn" id="btn-test-web-notify" title="Trigger a test alert">🔔 Test</button>
+            </div>
+
+            <!-- Routine Sub-Filters (All, Urgent, Done) -->
+            <div class="routine-filter-row">
+              <div class="filter-group">
+                <button class="routine-filter-tab active" data-routine-filter="all">All <span class="counter-badge" id="count-routine-all">0</span></button>
+                <button class="routine-filter-tab tab-critical" data-routine-filter="urgent">Urgent <span class="counter-badge" id="count-routine-urgent">0</span></button>
+                <button class="routine-filter-tab" data-routine-filter="completed">Done <span class="counter-badge" id="count-routine-done">0</span></button>
+              </div>
+            </div>
+
+            <div class="routine-quick-add">
+              <div class="routine-input-row">
+                <input type="text" id="routine-title-input" placeholder="Routine name, e.g. Morning stretch" />
+                <input type="time" id="routine-time-input" value="09:00" />
+              </div>
+              <div class="routine-input-row">
+                <input type="text" id="routine-cat-input" placeholder="Category (@health, @work, @routine)" />
+                <button id="routine-submit-btn">+ Add Routine</button>
+              </div>
+            </div>
+
+            <div class="routines-scrollable" id="routines-container">
+              <!-- Rendered Routines -->
+            </div>
+          </section>
+
+          <!-- Day-Specific Daily Diary View -->
+          <section id="notes-section" class="view-panel">
+            <div class="diary-header-card">
+              <div class="diary-nav-bar">
+                <button class="cal-btn" id="btn-diary-prev">◀ Prev</button>
+                <button class="cal-btn" id="btn-diary-today">Today</button>
+                <button class="cal-btn" id="btn-diary-next">Next ▶</button>
+                <button class="cal-btn" id="btn-diary-history" style="margin-left:auto;">📚 History</button>
+              </div>
+              <div class="diary-title-box">
+                <h3 id="diary-day-title">📔 Daily Reflections</h3>
+                <span class="sub-label" id="diary-bs-subtitle">Day-specific scratchpad & memory log</span>
+              </div>
+            </div>
+
+            <div id="diary-history-panel" class="diary-history-panel hidden">
+              <!-- Populated with past dates -->
+            </div>
+
+            <div class="note-quick-add">
+              <input type="text" id="note-input" placeholder="Write reflection / thoughts for this day..." />
+              <button id="note-submit-btn">Save</button>
+            </div>
+
+            <div class="notes-scrollable" id="notes-container">
+              <!-- Rendered Notes -->
+            </div>
+          </section>
+
+        </div>
+
+        <!-- Quick Add Natural Language Command Bar -->
+        <footer class="quick-input-footer">
+          <!-- Autocomplete suggestions dropdown -->
+          <div id="autocomplete-suggestions" class="autocomplete-dropdown hidden"></div>
+
+          <form id="quick-add-form" class="input-form">
+            <div class="input-glow-wrapper">
+              <span class="cmd-prefix">❯</span>
+              <input 
+                type="text" 
+                id="quick-input" 
+                placeholder="Finish project from Sept 8 to Sept 20 #urgent" 
+                autocomplete="off" 
+                required 
+              />
+              <button type="submit" class="submit-btn" id="btn-submit-task" title="Add Task (Enter)">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="19" x2="12" y2="5"></line>
+                  <polyline points="5 12 12 5 19 12"></polyline>
+                </svg>
+                <span>Add</span>
+              </button>
+            </div>
+          </form>
+          <div class="input-hints">
+            <span class="hint-tag" onclick="insertExample('/routine 08:30 Morning workout #health')">/routine</span>
+            <span class="hint-tag" onclick="insertExample('Finish project from Sept 8 to Sept 20 #urgent')">Range</span>
+            <span class="hint-tag" onclick="insertExample('Submit tax report by Sept 10 #high')">by Date</span>
+            <span class="hint-tag" onclick="insertExample('/note Standup update')">/note</span>
+            <span class="hint-key">Press <kbd>/</kbd> to focus</span>
+          </div>
+        </footer>
+
+        <!-- Task Creation Modal -->
+        <div id="task-modal" class="modal-backdrop hidden">
+          <div class="modal-box">
+            <div class="modal-header">
+              <h3>➕ Create New Task / Deadline</h3>
+              <button class="modal-close-btn" id="btn-close-task-modal">✕</button>
+            </div>
+            <div class="modal-body">
+              <div class="modal-field">
+                <label>Task Title</label>
+                <input type="text" id="modal-task-title" placeholder="What needs to be done?" />
+              </div>
+              <div class="modal-row">
+                <div class="modal-field">
+                  <label>Start Date (AD)</label>
+                  <input type="date" id="modal-task-start" />
+                </div>
+                <div class="modal-field">
+                  <label>Deadline Date (AD)</label>
+                  <input type="date" id="modal-task-end" />
+                </div>
+              </div>
+              <div class="modal-row">
+                <div class="modal-field">
+                  <label>Priority</label>
+                  <select id="modal-task-priority">
+                    <option value="normal">Normal</option>
+                    <option value="urgent">Urgent</option>
+                    <option value="high">High</option>
+                    <option value="low">Low</option>
+                  </select>
+                </div>
+                <div class="modal-field">
+                  <label>Category</label>
+                  <input type="text" id="modal-task-category" placeholder="work, study, routine..." value="work" />
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button class="cal-btn" id="btn-cancel-task-modal">Cancel</button>
+              <button class="submit-btn" id="btn-save-task-modal">✓ Save Task</button>
+            </div>
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

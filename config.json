@@ -1,0 +1,12 @@
+{
+  "target_screen": 2,
+  "dock_mode": "split",
+  "sidebar_width": 390,
+  "calendar_mode": "bs",
+  "borderless": false,
+  "pinned": true,
+  "skip_taskbar": true,
+  "skip_pager": true,
+  "web_server_port": 8765,
+  "auto_refresh_sec": 1
+}

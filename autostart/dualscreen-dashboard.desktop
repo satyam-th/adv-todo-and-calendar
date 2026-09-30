@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Apex Dual-Screen Productivity Dashboard
+Comment=Lightweight interactive desktop widget with dual-calendar, urgency engine, and notes docked on Screen 2
+Exec=/usr/bin/python3 /home/v14/Documents/wallpaper/main.py --screen 2 --dock right
+Path=/home/v14/Documents/wallpaper
+Terminal=false
+Categories=Utility;Office;Productivity;
+StartupNotify=false
+X-GNOME-Autostart-enabled=true
+X-GNOME-Autostart-Delay=2

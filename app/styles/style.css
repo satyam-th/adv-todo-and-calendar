@@ -1,0 +1,683 @@
+/* Modern Dark-Mode Dashboard Styling with Full Monthly Calendar & Task Sidebar */
+
+/* Root Window */
+window.dashboard-window {
+    background-color: #0b0f19;
+    color: #f1f5f9;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", Ubuntu, sans-serif;
+}
+
+/* Main Container */
+.main-box {
+    background-color: #0b0f19;
+    padding: 10px 12px;
+}
+
+/* Top Universal Header */
+.header-box {
+    background: linear-gradient(135deg, #111827 0%, #1e293b 100%);
+    border-radius: 12px;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.calendar-title-ad {
+    font-size: 14px;
+    font-weight: 700;
+    color: #38bdf8;
+}
+
+.calendar-title-bs {
+    font-size: 14px;
+    font-weight: 700;
+    color: #fbbf24;
+}
+
+.calendar-sub {
+    font-size: 11px;
+    color: #94a3b8;
+}
+
+.calendar-time {
+    font-size: 16px;
+    font-weight: 800;
+    color: #ffffff;
+    font-family: monospace, monospace;
+    background-color: rgba(15, 23, 42, 0.7);
+    border-radius: 8px;
+    padding: 4px 10px;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+}
+
+.screen-switch-btn {
+    background-color: rgba(56, 189, 248, 0.12);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    color: #38bdf8;
+    font-size: 11px;
+    font-weight: 700;
+    border-radius: 7px;
+    padding: 4px 10px;
+    transition: all 150ms ease;
+}
+
+.screen-switch-btn:hover {
+    background-color: rgba(56, 189, 248, 0.25);
+    color: #ffffff;
+}
+
+/* Split Body Container */
+.split-body-box {
+    background: transparent;
+}
+
+/* LEFT PANE: Full Monthly Calendar Grid */
+.calendar-main-pane {
+    background-color: #0f172a;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 12px;
+    margin-right: 8px;
+}
+
+.calendar-nav-toolbar {
+    margin-bottom: 8px;
+    background: rgba(15, 23, 42, 0.6);
+    border-radius: 8px;
+    padding: 4px;
+}
+
+.calendar-month-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.calendar-span-subtitle {
+    font-size: 11px;
+    color: #94a3b8;
+    margin-left: 6px;
+}
+
+.cal-nav-btn {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #f1f5f9;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 6px;
+}
+
+.cal-nav-btn:hover {
+    background: rgba(56, 189, 248, 0.2);
+    border-color: #38bdf8;
+    color: #ffffff;
+}
+
+.cal-nav-btn.active {
+    background: #2563eb;
+    color: #ffffff;
+    border-color: #3b82f6;
+}
+
+/* Weekday column headers */
+.cal-weekday-header {
+    font-size: 11px;
+    font-weight: 700;
+    color: #94a3b8;
+    padding: 6px 4px;
+}
+
+.cal-weekday-sat {
+    color: #f87171;
+    font-weight: 800;
+}
+
+/* Day Cells */
+.cal-day-cell {
+    background-color: #131c2e;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 6px 8px;
+    margin: 2px;
+    transition: background-color 150ms ease, border-color 150ms ease;
+    min-height: 60px;
+}
+
+.cal-day-cell:hover {
+    background-color: #1a2742;
+    border-color: rgba(56, 189, 248, 0.4);
+}
+
+.cal-day-cell.today {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.25) 0%, rgba(56, 189, 248, 0.15) 100%);
+    border: 1.5px solid #38bdf8;
+    box-shadow: 0 0 10px rgba(56, 189, 248, 0.25);
+}
+
+.cal-day-cell.saturday {
+    border-left: 2px solid rgba(239, 68, 68, 0.4);
+}
+
+.cal-day-cell.empty {
+    background-color: transparent;
+    border: 1px dashed rgba(255, 255, 255, 0.02);
+}
+
+.cal-primary-num {
+    font-size: 16px;
+    font-weight: 800;
+    color: #f8fafc;
+}
+
+.cal-primary-num.today-text {
+    color: #38bdf8;
+}
+
+.cal-primary-num.sat-text {
+    color: #fca5a5;
+}
+
+.cal-dual-num {
+    font-size: 10px;
+    font-weight: 600;
+    color: #94a3b8;
+    font-family: monospace;
+}
+
+.cal-task-indicator {
+    background: rgba(239, 68, 68, 0.2);
+    color: #fca5a5;
+    border: 1px solid rgba(239, 68, 68, 0.5);
+    border-radius: 4px;
+    padding: 1px 4px;
+    font-size: 9px;
+    font-weight: 700;
+    margin-top: 4px;
+}
+
+/* RIGHT PANE: Task & Deadline Sidebar */
+.sidebar-pane {
+    background-color: #0f172a;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 10px 12px;
+    min-width: 380px;
+}
+
+/* View Switcher Tabs */
+.view-switcher-box {
+    margin-bottom: 6px;
+    background-color: #0b0f19;
+    border-radius: 8px;
+    padding: 3px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.view-tab-btn {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 150ms ease;
+}
+
+.view-tab-btn:hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+.view-tab-btn.active {
+    background-color: #2563eb;
+    color: #ffffff;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4);
+}
+
+.routine-card {
+    border-left: 3px solid #38bdf8;
+}
+
+.routine-card.urgency-critical {
+    border-left: 3px solid #ef4444;
+}
+
+/* Filter Navigation Bar */
+.filter-box {
+    margin-bottom: 8px;
+    background-color: #111827;
+    border-radius: 8px;
+    padding: 3px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.filter-btn {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 6px;
+    transition: all 150ms ease;
+}
+
+.filter-btn:hover {
+    color: #f1f5f9;
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+.filter-btn.active {
+    background-color: #2563eb;
+    color: #ffffff;
+}
+
+/* Task Scrolled Area */
+.tasks-scroll {
+    border-radius: 8px;
+    background: transparent;
+}
+
+/* Task Card */
+.task-card {
+    background-color: #131c2e;
+    border-radius: 10px;
+    padding: 8px 10px;
+    margin-bottom: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: background-color 150ms ease, border-color 150ms ease;
+}
+
+.task-card:hover {
+    background-color: #1a253c;
+    border-color: rgba(56, 189, 248, 0.3);
+}
+
+.task-title {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #f8fafc;
+}
+
+.task-title-completed {
+    font-size: 12.5px;
+    font-weight: 500;
+    color: #64748b;
+    text-decoration: line-through;
+}
+
+/* Range Pill Badge */
+.range-pill {
+    background-color: rgba(56, 189, 248, 0.12);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 4px;
+    font-size: 9.5px;
+    font-weight: 700;
+    padding: 1px 5px;
+    font-family: monospace;
+}
+
+/* Urgency Badges */
+.badge-critical {
+    background-color: #dc2626;
+    color: #ffffff;
+    border-radius: 6px;
+    font-size: 9.5px;
+    font-weight: 800;
+    padding: 3px 7px;
+    border: 1px solid #ef4444;
+}
+
+.badge-warning {
+    background-color: rgba(245, 158, 11, 0.2);
+    color: #fbbf24;
+    border-radius: 6px;
+    font-size: 9.5px;
+    font-weight: 700;
+    padding: 3px 7px;
+    border: 1px solid rgba(245, 158, 11, 0.4);
+}
+
+.badge-healthy {
+    background-color: rgba(16, 185, 129, 0.15);
+    color: #34d399;
+    border-radius: 6px;
+    font-size: 9.5px;
+    font-weight: 700;
+    padding: 3px 7px;
+    border: 1px solid rgba(16, 185, 129, 0.35);
+}
+
+.badge-overdue {
+    background-color: #991b1b;
+    color: #fecaca;
+    border-radius: 6px;
+    font-size: 9.5px;
+    font-weight: 800;
+    padding: 3px 7px;
+    border: 1px solid #dc2626;
+}
+
+.badge-completed {
+    background-color: rgba(100, 116, 139, 0.2);
+    color: #94a3b8;
+    border-radius: 6px;
+    font-size: 9.5px;
+    font-weight: 600;
+    padding: 3px 7px;
+}
+
+.badge-upcoming {
+    background-color: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border-radius: 6px;
+    font-size: 9.5px;
+    font-weight: 700;
+    padding: 3px 7px;
+    border: 1px solid rgba(56, 189, 248, 0.4);
+}
+
+/* Checkbox button */
+.check-btn {
+    border-radius: 6px;
+    min-width: 22px;
+    min-height: 22px;
+    padding: 0;
+    margin-right: 6px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.check-btn:hover {
+    background-color: rgba(37, 99, 235, 0.3);
+    border-color: #3b82f6;
+}
+
+.check-btn.checked {
+    background-color: #10b981;
+    border-color: #059669;
+    color: white;
+}
+
+/* Delete button */
+.delete-btn {
+    border-radius: 6px;
+    min-width: 22px;
+    min-height: 22px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    color: #64748b;
+}
+
+.delete-btn:hover {
+    color: #ef4444;
+    background-color: rgba(239, 68, 68, 0.15);
+}
+
+/* Day Notes */
+.note-item {
+    background-color: #1e293b;
+    border-radius: 6px;
+    padding: 6px 8px;
+    margin-bottom: 4px;
+    font-size: 11.5px;
+    color: #e2e8f0;
+}
+
+/* Bottom Quick-Input Bar */
+.input-bar-container {
+    background-color: #111827;
+    border-radius: 10px;
+    padding: 6px 8px;
+    margin-top: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.quick-entry {
+    background-color: #0b0f19;
+    color: #ffffff;
+    border-radius: 7px;
+    padding: 6px 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 11.5px;
+}
+
+.quick-entry:focus {
+    border-color: #38bdf8;
+}
+
+.quick-submit-btn {
+    background-color: #2563eb;
+    color: #ffffff;
+    border-radius: 7px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border: none;
+    font-size: 11.5px;
+}
+
+.quick-submit-btn:hover {
+    background-color: #1d4ed8;
+}
+
+.hint-label {
+    font-size: 9.5px;
+    color: #64748b;
+    margin-top: 3px;
+    margin-left: 2px;
+}
+
+/* Autocomplete Suggestion Box */
+.suggest-box {
+    background-color: #0f172a;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    border-radius: 8px;
+    padding: 4px;
+    margin-bottom: 6px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+.suggest-btn {
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    padding: 4px 8px;
+    text-align: left;
+    color: #cbd5e1;
+    font-size: 11px;
+    transition: all 120ms ease;
+}
+
+.suggest-btn:hover {
+    background-color: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+}
+
+.suggest-tag {
+    background-color: rgba(37, 99, 235, 0.3);
+    color: #93c5fd;
+    font-size: 9.5px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-right: 6px;
+}
+
+.suggest-hint {
+    color: #64748b;
+    font-size: 10px;
+    margin-left: 8px;
+}
+
+/* Daily Diary & Journal */
+.diary-header-box {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(15, 23, 42, 0.9) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 8px 10px;
+    margin-bottom: 6px;
+}
+
+.diary-date-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fbbf24;
+}
+
+.diary-date-sub {
+    font-size: 10px;
+    color: #94a3b8;
+}
+
+.diary-nav-btn {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #f1f5f9;
+    font-size: 10.5px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 6px;
+}
+
+.diary-nav-btn:hover {
+    background: rgba(56, 189, 248, 0.2);
+    border-color: #38bdf8;
+    color: #ffffff;
+}
+
+.diary-nav-btn.active {
+    background: #2563eb;
+    color: #ffffff;
+    border-color: #3b82f6;
+}
+
+.diary-card {
+    background-color: #131c2e;
+    border-left: 3px solid #fbbf24;
+    border-radius: 8px;
+    padding: 8px 10px;
+    margin-bottom: 5px;
+}
+
+.diary-time-badge {
+    background-color: rgba(251, 191, 36, 0.15);
+    color: #fbbf24;
+    font-size: 9.5px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-right: 6px;
+}
+
+.diary-history-item {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-size: 11px;
+    color: #e2e8f0;
+    margin-bottom: 3px;
+}
+
+.diary-history-item:hover {
+    background: rgba(245, 158, 11, 0.15);
+    border-color: rgba(245, 158, 11, 0.4);
+    color: #fbbf24;
+}
+
+/* Task Creation Dialog Card */
+.task-creator-box {
+    background: #111827;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    border-radius: 10px;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+}
+
+.creator-header-lbl {
+    font-size: 13px;
+    font-weight: 800;
+    color: #38bdf8;
+}
+
+.cal-diary-indicator {
+    font-size: 9px;
+    color: #fbbf24;
+    margin-top: 1px;
+}
+
+.cal-day-cell.selected {
+    border: 2px solid #38bdf8;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.3) 0%, rgba(56, 189, 248, 0.2) 100%);
+    box-shadow: 0 0 12px rgba(56, 189, 248, 0.4);
+}
+
+.selected-date-banner {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%);
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    border-radius: 8px;
+    padding: 6px 10px;
+    margin-bottom: 6px;
+}
+
+.selected-date-lbl {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: #38bdf8;
+}
+
+/* Today View Focus Section */
+.today-header-box {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.85) 0%, rgba(15, 23, 42, 0.95) 100%);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 10px;
+    padding: 10px 12px;
+    margin-bottom: 4px;
+}
+
+.today-clean-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px dashed rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 14px;
+    margin-bottom: 6px;
+}
+
+.rollover-pill {
+    background-color: rgba(245, 158, 11, 0.18);
+    color: #fcd34d;
+    border: 1px solid rgba(245, 158, 11, 0.45);
+    font-size: 9.5px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.done-today-pill {
+    background-color: rgba(16, 185, 129, 0.18);
+    color: #6ee7b7;
+    border: 1px solid rgba(16, 185, 129, 0.45);
+    font-size: 9.5px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.cal-done-indicator {
+    background: rgba(16, 185, 129, 0.18);
+    color: #6ee7b7;
+    border: 1px solid rgba(16, 185, 129, 0.45);
+    border-radius: 4px;
+    padding: 1px 4px;
+    font-size: 9px;
+    font-weight: 700;
+    margin-top: 2px;
+}
+
+

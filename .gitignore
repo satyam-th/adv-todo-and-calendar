@@ -1,0 +1,33 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# SQLite Database (personal tasks & routine data)
+tasks.db
+tasks.db-wal
+tasks.db-shm
+*.db
+*.sqlite3
+
+# Environment & local virtualenvs
+.env
+.venv/
+env/
+venv/
+ENV/
+
+# Testing & Cache
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
