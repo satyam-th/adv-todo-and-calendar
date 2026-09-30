@@ -184,7 +184,7 @@ sudo apt install -y python3 python3-gi gir1.2-gtk-4.0 libnotify-bin pulseaudio-u
 ### 1. Launch the Native GTK4 Desktop Widget
 ```bash
 # Clone the repository
-git clone https://github.com/satyam-th/wallpaper.git adv-todo-and-calendar
+git clone https://github.com/satyam-th/adv-todo-and-calendar.git
 cd adv-todo-and-calendar
 
 # Run on Screen 2 (default)
